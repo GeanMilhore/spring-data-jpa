@@ -49,7 +49,7 @@ public class RelatorioService {
 
 			default:
 				System.out.println("Por favor selecione um opção valida...");
-				break;
+				break; 
 			}
 		}
 	}
@@ -97,4 +97,5 @@ public class RelatorioService {
 		List<Funcionario> list = repository.findDataContratacaoMaior(localDate);
 		list.forEach(System.out::println);
 	}
+	// teste push main
 }
