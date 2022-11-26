@@ -98,6 +98,6 @@ public class Funcionario {
 	
 	@Override
 	public String toString() {
-		return "[Id: "+this.id+" , Nome: "+this.nome+" ]";
+		return "[ Id: "+this.id+" | Nome: "+this.nome+" | Salário: "+this.salario+" ]";
 	}
 }

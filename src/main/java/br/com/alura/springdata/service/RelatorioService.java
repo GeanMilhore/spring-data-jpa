@@ -97,5 +97,4 @@ public class RelatorioService {
 		List<Funcionario> list = repository.findDataContratacaoMaior(localDate);
 		list.forEach(System.out::println);
 	}
-	// teste push main
 }
