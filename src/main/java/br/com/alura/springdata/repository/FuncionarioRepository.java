@@ -19,4 +19,7 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 			+ "AND f.salario >= :salario "
 			+ "AND f.dataContratacao = :data ")
 	List<Funcionario> findNomeSalarioMaiorDataContratacao(String nome, BigDecimal salario, LocalDate data);
+	
+	@Query(nativeQuery = true, value = "SELECT * FROM funcionarios f WHERE f.data_contratacao >= :data ")
+	List<Funcionario> findDataContratacaoMaior(LocalDate data);
 }

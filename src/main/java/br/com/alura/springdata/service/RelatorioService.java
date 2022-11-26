@@ -13,7 +13,7 @@ import br.com.alura.springdata.repository.FuncionarioRepository;
 
 @Service
 public class RelatorioService {
-	
+
 	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	private final FuncionarioRepository repository;
@@ -29,6 +29,7 @@ public class RelatorioService {
 			System.out.println("0 - Voltar ao Menu Principal ");
 			System.out.println("1 - Buscar Funcionário pelo Nome ");
 			System.out.println("2 - Buscar Funcionário por Nome, Data contratação e Salario Maior ");
+			System.out.println("3 - Buscar Funcionário por Data Contratação ");
 
 			Integer action = scanner.nextInt();
 			switch (action) {
@@ -41,6 +42,9 @@ public class RelatorioService {
 				break;
 			case 2:
 				buscarFuncionarioNomeSalarioMaiorData(scanner);
+				break;
+			case 3:
+				buscarFuncionarioDataContratacao(scanner);
 				break;
 
 			default:
@@ -80,8 +84,17 @@ public class RelatorioService {
 
 		System.out.println("Qual salario deseja pesquisar?");
 		BigDecimal salario = new BigDecimal(scanner.nextDouble());
-		
+
 		List<Funcionario> list = repository.findNomeSalarioMaiorDataContratacao(nome, salario, localDate);
+		list.forEach(System.out::println);
+	}
+
+	private void buscarFuncionarioDataContratacao(Scanner scanner) {
+		System.out.println("Qual data contratação deseja pesquisar?");
+		String data = scanner.next();
+		LocalDate localDate = LocalDate.parse(data, formatter);
+
+		List<Funcionario> list = repository.findDataContratacaoMaior(localDate);
 		list.forEach(System.out::println);
 	}
 }
