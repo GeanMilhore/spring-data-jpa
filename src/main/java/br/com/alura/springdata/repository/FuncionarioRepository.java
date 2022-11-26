@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.alura.springdata.orm.Funcionario;
 
 @Repository
-public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
+public interface FuncionarioRepository extends PagingAndSortingRepository<Funcionario, Long>{
 	List<Funcionario> findByNome(String nome);
 	
 	@Query("SELECT f FROM Funcionario f "
