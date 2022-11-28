@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,7 @@ import br.com.alura.springdata.orm.Funcionario;
 import br.com.alura.springdata.orm.FuncionarioProjecao;
 
 @Repository
-public interface FuncionarioRepository extends PagingAndSortingRepository<Funcionario, Long>{
+public interface FuncionarioRepository extends PagingAndSortingRepository<Funcionario, Long>, JpaSpecificationExecutor<Funcionario>{
 	List<Funcionario> findByNome(String nome);
 	
 	@Query("SELECT f FROM Funcionario f "
